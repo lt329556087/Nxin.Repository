@@ -1,0 +1,49 @@
+#=========================== Filebeat inputs =============================
+filebeat.inputs:
+
+- type: log
+  enabled: true
+  multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+  paths:
+    -  /var/log/servicelog/*/*/*.log
+  close_inactive: 24h
+
+#============================= Filebeat modules ===============================
+filebeat.config.modules:
+  # Glob pattern for configuration loading
+  path: ${path.config}/modules.d/*.yml
+
+  # Set to true to enable config reloading
+  reload.enabled: false
+
+
+#==================== Elasticsearch template setting ==========================
+setup.template.settings:
+  index.number_of_shards: 3
+
+#============================== Kibana =====================================
+setup.kibana:
+
+#-------------------------- Kafka output ------------------------------
+output.kafka:
+  hosts: ["nxin-log-kafka01.produce.zs:9092", "nxin-log-kafka02.produce.zs:9092", "nxin-log-kafka03.produce.zs:9092"]
+  topic: 'fm-dbn-service'
+  partition.round_robin:
+    reachable_only: false
+
+  required_acks: 1
+  compression: gzip
+  max_message_bytes: 1000000
+
+
+#================================ Processors =====================================
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+
+#================================ Logging =====================================
+logging.level: debug
+logging.to_files: false
+to_syslog: false

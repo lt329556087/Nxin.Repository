@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Architecture.Common.HttpClientUtil" Version="1.0.4" />
+    <PackageReference Include="Architecture.Common.NumericalOrderCreator" Version="1.0.5" />
+    <PackageReference Include="Architecture.Seedwork.Core" Version="2.1.13" />
+    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.25.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FinanceManagement.Infrastructure\FinanceManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\FinanceManagement.Util\FinanceManagement.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EncrypDecryp">
+      <HintPath>..\EncrypDecryp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

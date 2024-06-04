@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Architecture.Common.ServiceRegister" Version="2.1.3" />
+    <PackageReference Include="Architecture.Common.Util" Version="1.2.8" />
+    <PackageReference Include="Architecture.Seedwork.Domain" Version="2.2.4" />
+    <PackageReference Include="Architecture.Seedwork.Logging" Version="2.2.8" />
+  </ItemGroup>
+
+</Project>
